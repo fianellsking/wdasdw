@@ -1,0 +1,126 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Periastron Stars RPG Script",
+   LoadingTitle = "Tar Hub",
+   LoadingSubtitle = "by fianellsking",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "The First Hack"
+   },
+   KeySystem = true,
+   KeySettings = {
+      Title = "Periastron Stars RPG | Keys",
+      Subtitle = "Link In Discord Server",
+      Note = "Join Server From Misc Tab",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = true,
+      Key = {"https://pastebin.com/raw/cQYab7aX"}
+   }
+})
+
+local MainTab = Window:CreateTab("General", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+Rayfield:Notify({
+   Title = "You executed the script!",
+   Content = "very good gui",
+   Duration = 5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+local Button = MainTab:CreateButton({
+   Name = "Inf Jump",
+   Callback = function()
+    local InfiniteJumpEnabled = true
+    game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+   end,
+})
+local Dropdown = MainTab:CreateDropdown({
+   Name = "Select Area",
+   Options = {"Plain","Graveyard"},
+   CurrentOption = {"nil"},
+   MultipleOptions = false,
+   Flag = "teleport", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Option)
+        print()
+   end,
+})
+local Slider = MainTab:CreateSlider({
+   Name = "WalkSpeed",
+   Range = {0, 300},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})
+local Slider = MainTab:CreateSlider({
+   Name = "JumpPower",
+   Range = {1, 200},
+   Increment = 1,
+   Suffix = "JumpPower",
+   CurrentValue = 50,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+   end,
+})
+local Slider = MainTab:CreateSlider({
+   Name = "Hit Range",
+   Range = {1, 300},
+   Increment = 1,
+   Suffix = "Hit Range",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   end,
+})
+local TeleportTab = Window:CreateTab("Teleports", nil) -- Title, Image
+local TeleportSection = TeleportTab:CreateSection("Maps")
+
+local Button = TeleportTab:CreateButton({
+   Name = "Plain",
+   Callback = function()
+   end,
+})
+
+local Button = TeleportTab:CreateButton({
+   Name = "Graveyard",
+   Callback = function()
+        print('Graveyard')
+   end,
+})
+
+local MiscTab = Window:CreateTab("Misc", nil)
+local MiscSection = MiscTab:CreateSection("Maps")
+local Input = MiscTab:CreateInput({
+   Name = "Jump Power",
+   PlaceholderText = "1-200",
+   RemoveTextAfterFocusLost = true,
+   Callback = function(Text)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Text)
+   end,
+})
+local Toggle = MiscTab:CreateToggle({
+   Name = "Auto Farm",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        print('Hello')
+   end,
+})
